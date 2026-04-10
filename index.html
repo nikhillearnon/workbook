@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Like Jesus Leadership Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #4AABA8;
+    --dark-teal: #2E8B8A;
+    --dark-text: #333333;
+    --mid-gray: #999999;
+    --light-bg: #f7f8f8;
+    --border: #d8dede;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print { display: none !important; }
+    .page { box-shadow: none !important; margin: 0 !important; padding: 28px 36px !important; }
+    @page { margin: 0.4in; size: A4 portrait; }
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #e8ecec;
+    color: var(--dark-text);
+    line-height: 1.45;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px 60px;
+  }
+
+  .page {
+    background: var(--white);
+    width: 100%;
+    max-width: 780px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.1);
+    padding: 0 0 32px 0;
+    border-radius: 2px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--teal);
+    padding: 14px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .diamond {
+    width: 18px; height: 18px;
+    background: var(--white);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .brand-text {
+    color: var(--white);
+  }
+  .brand-text .name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.3px;
+  }
+  .brand-text .sub {
+    font-size: 6.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 1px;
+  }
+  .header-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.35);
+    margin-left: 14px;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+  }
+  .book-icon {
+    display: flex; gap: 2px;
+  }
+  .book-icon span {
+    display: block;
+    width: 8px; height: 12px;
+    border: 1.2px solid white;
+    border-radius: 1px;
+  }
+  .llj-text {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── TITLE ── */
+  .title-section {
+    padding: 24px 36px 0;
+  }
+  .title-section h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--dark-teal);
+    line-height: 1.18;
+    margin-bottom: 4px;
+  }
+
+  /* ── INSTRUCTIONS ── */
+  .instructions {
+    padding: 14px 36px 0;
+    font-size: 12.5px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  /* ── SEPARATOR ── */
+  .main-sep {
+    margin: 16px 36px 0;
+    border: none;
+    border-top: 2px solid var(--teal);
+  }
+
+  /* ── ASSESSMENT BODY ── */
+  .assessment-body {
+    padding: 0 36px;
+  }
+
+  /* ── SINGLE ITEM ROW ── */
+  .item-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    padding: 12px 0 12px;
+    gap: 10px;
+  }
+  .item-separator {
+    border: none;
+    border-top: 1px solid #d0d0d0;
+    margin: 0;
+  }
+
+  .left-stmt, .right-stmt {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--dark-text);
+    padding-top: 2px;
+  }
+  .right-stmt {
+    text-align: right;
+  }
+
+  /* ── RADIO BLOCK ── */
+  .radio-block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    min-width: 280px;
+  }
+
+  .radio-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .radio-row .row-label {
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--dark-teal);
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .radio-row .radios {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .radio-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24px;
+  }
+
+  /* Custom radio */
+  .radio-cell input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--teal);
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .radio-cell input[type="radio"]:hover {
+    border-color: var(--dark-teal);
+    box-shadow: 0 0 0 3px rgba(74,171,168,0.12);
+  }
+  .radio-cell input[type="radio"]:checked {
+    border-color: var(--dark-teal);
+    background: var(--dark-teal);
+    box-shadow: inset 0 0 0 3px var(--white);
+  }
+
+  /* Number labels row */
+  .number-labels {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .number-labels .num-spacer {
+    width: 16px;
+    flex-shrink: 0;
+  }
+  .number-labels span {
+    width: 24px;
+    text-align: center;
+    font-size: 9px;
+    color: var(--mid-gray);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 18px 36px 0;
+    font-size: 10.5px;
+    color: var(--mid-gray);
+    font-style: italic;
+  }
+
+  /* ── ACTION BAR ── */
+  .action-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(46,139,138,0.97);
+    backdrop-filter: blur(8px);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    z-index: 100;
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.15);
+  }
+  .action-bar button {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+  }
+  .btn-save {
+    background: var(--white);
+    color: var(--dark-teal);
+  }
+  .btn-save:hover { background: #f0fafa; transform: translateY(-1px); }
+  .btn-reset {
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.4) !important;
+  }
+  .btn-reset:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── STATUS ── */
+  .completion-status {
+    padding: 8px 36px 0;
+    font-size: 11.5px;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .completion-bar {
+    flex: 1;
+    height: 4px;
+    background: #e4e8e8;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .completion-fill {
+    height: 100%;
+    background: var(--teal);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="diamond"></div>
+      <div class="brand-text">
+        <div class="name">Encounter</div>
+        <div class="sub">Leadership Development Experience</div>
+      </div>
+      <div class="header-divider"></div>
+    </div>
+    <div class="header-right">
+      <div class="book-icon"><span></span><span></span></div>
+      <div class="llj-text">LLJ</div>
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-section">
+    <h1>Lead Like Jesus<br>Leadership Assessment</h1>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instructions">
+    <strong>Instructions:</strong> For each of the 9 leadership dimensions below, assess yourself on a scale of 1 to 10. A score of 1 means you identify more with the statement on the left; 10 means you identify more with the statement on the right. Rate yourself twice for each dimension — once for <strong>Home (H)</strong> and once for <strong>Work (W)</strong>. Select the radio button that best reflects where you are today. Once complete, save a copy for your personal reflection.
+  </div>
+
+  <!-- MAIN SEPARATOR -->
+  <hr class="main-sep">
+
+  <!-- COMPLETION STATUS -->
+  <div class="completion-status no-print">
+    <span id="completionText">0 of 18 rated</span>
+    <div class="completion-bar"><div class="completion-fill" id="completionFill"></div></div>
+  </div>
+
+  <!-- ASSESSMENT ITEMS -->
+  <div class="assessment-body" id="assessmentBody"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    This leadership assessment has been inspired by and adapted from F. Damazio, <em>The Making of a Leader.</em>
+  </div>
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar no-print">
+  <button class="btn-save" onclick="saveAsPDF()">💾 Save / Print PDF</button>
+  <button class="btn-reset" onclick="resetForm()">↺ Reset All</button>
+</div>
+
+<script>
+const ITEMS = [
+  ["My leadership objective is to be served",
+   "My leadership objective is to serve"],
+  ["I am interested primarily in my self-image and advancement",
+   "I consider team purpose, values and the concerns of team members before thinking of my own interests"],
+  ["I am motivated primarily by fear and self-protection",
+   "I will take personal risks to support and protect others"],
+  ["I see and treat others as having lower status",
+   "I treat others with respect and partnership status"],
+  ["I often create an atmosphere of dependence and low trust",
+   "I create a trusting atmosphere in which others see their potential being encouraged and developed"],
+  ["I rarely seek and tend to reject constructive criticism",
+   "I encourage input and feedback"],
+  ["I often take credit for accomplishments",
+   "I share the credit for my group's efforts"],
+  ["I rarely train others to function effectively or engage in succession planning",
+   "I equip and invest in others with a view to their advancement"],
+  ["My authority is based on external controls in the form of rules and regulations implemented by position power",
+   "My authority is based on personal power gained through encouragement, inspiration, motivation, and mutual respect"],
+];
+
+function buildRadioRow(itemIdx, type) {
+  const name = `item${itemIdx}_${type}`;
+  let html = `<div class="radio-row">
+    <span class="row-label">${type}</span>
+    <div class="radios">`;
+  for (let i = 1; i <= 10; i++) {
+    html += `<div class="radio-cell">
+      <input type="radio" name="${name}" value="${i}" onchange="updateCompletion()">
+    </div>`;
+  }
+  html += `</div></div>`;
+  return html;
+}
+
+function buildNumberLabels() {
+  let html = `<div class="radio-row">
+    <div class="num-spacer" style="width:16px"></div>
+    <div class="number-labels">`;
+  for (let i = 1; i <= 10; i++) {
+    html += `<span>${i}</span>`;
+  }
+  html += `</div></div>`;
+  return html;
+}
+
+function buildItems() {
+  const body = document.getElementById('assessmentBody');
+  let html = '';
+  ITEMS.forEach((item, idx) => {
+    if (idx > 0) {
+      html += `<hr class="item-separator">`;
+    }
+    html += `<div class="item-row">
+      <div class="left-stmt">${item[0]}</div>
+      <div class="radio-block">
+        ${buildRadioRow(idx + 1, 'H')}
+        ${buildNumberLabels()}
+        ${buildRadioRow(idx + 1, 'W')}
+      </div>
+      <div class="right-stmt">${item[1]}</div>
+    </div>`;
+  });
+  body.innerHTML = html;
+}
+
+function updateCompletion() {
+  const total = 18; // 9 items × 2 (H + W)
+  let filled = 0;
+  for (let i = 1; i <= 9; i++) {
+    if (document.querySelector(`input[name="item${i}_H"]:checked`)) filled++;
+    if (document.querySelector(`input[name="item${i}_W"]:checked`)) filled++;
+  }
+  const pct = Math.round((filled / total) * 100);
+  document.getElementById('completionText').textContent = `${filled} of ${total} rated`;
+  document.getElementById('completionFill').style.width = pct + '%';
+}
+
+function saveAsPDF() {
+  window.print();
+}
+
+function resetForm() {
+  if (confirm('Reset all selections? This cannot be undone.')) {
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    updateCompletion();
+  }
+}
+
+buildItems();
+</script>
+</body>
+</html>
